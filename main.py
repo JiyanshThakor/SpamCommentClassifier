@@ -9,11 +9,11 @@ from sklearn.metrics import classification_report, ConfusionMatrixDisplay
 import joblib as jb
 from xgboost import XGBClassifier
 
-df1 = pd.read_csv('spam/d1.csv')
-df2 = pd.read_csv('spam/d2.csv')
-df3 = pd.read_csv('spam/d3.csv')
-df4 = pd.read_csv('spam/d4.csv')
-df5 = pd.read_csv('spam/d5.csv')
+df1 = pd.read_csv('d1.csv')
+df2 = pd.read_csv('d2.csv')
+df3 = pd.read_csv('d3.csv')
+df4 = pd.read_csv('d4.csv')
+df5 = pd.read_csv('d5.csv')
 
 df = pd.concat([df1, df2, df3, df4, df5], ignore_index=True)
 
@@ -56,5 +56,6 @@ print(classification_report(y_test, y_pred))
 
 ConfusionMatrixDisplay.from_estimator(model, X_test, y_test, display_labels=['Ham', 'Spam'])
 plt.show()
+
 
 jb.dump(model, "SpamPredicter.pkl")
